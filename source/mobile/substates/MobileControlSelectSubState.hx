@@ -310,7 +310,7 @@ class MobileControlSelectSubState extends MusicBeatSubstate
 		var arrowWidth:Float = Note.swagWidth;
 		var spacing:Float = mobilePlayerNoteSpacing();
 		var groupWidth:Float = arrowWidth + spacing * 3;
-		return (FlxG.width - groupWidth) * 0.5 + spacing * lane;
+		return ((FlxG.width - groupWidth) * 0.5) + (spacing * lane);
 	}
 
 	function showOfficialPlayerStrums():Void
@@ -320,7 +320,7 @@ class MobileControlSelectSubState extends MusicBeatSubstate
 		add(officialPlayerStrums);
 		officialStrumTouchState = [false, false, false, false];
 
-		var strumLineX:Float = -278; // 0
+		var strumLineX:Float = 0;
 		var strumLineY:Float = 0;
 
 		for (i in 0...4)
