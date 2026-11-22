@@ -4237,7 +4237,7 @@ class PlayState extends MusicBeatState
 				//trace((totalNotesHit / totalPlayed) + ', Total: ' + totalPlayed + ', notes hit: ' + totalNotesHit);
 
 				// Rating Name
-				switch (ClientPrefs.data.ratingType)
+				switch (ClientPrefs.data.typeRating)
 				{
 					case 'Kade Engine':
 						ratingName = ratingStuffKade[ratingStuffKade.length-1][0]; //Uses last string
