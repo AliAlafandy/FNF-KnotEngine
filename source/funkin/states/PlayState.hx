@@ -92,7 +92,7 @@ class PlayState extends MusicBeatState
 	public static var STRUM_X_MIDDLESCROLL = -278;
 
 	public static var ratingStuff:Array<Dynamic> = [
-		switch ()
+		switch (ClientPrefs.data.typeRating)
 		{
 			case 'Kade Engine':
 				['D', 0.2],
