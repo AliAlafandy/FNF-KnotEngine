@@ -592,7 +592,7 @@ class EditorPlayState extends MusicBeatSubstate
 		var arrowWidth:Float = Note.swagWidth;
 		var spacing:Float = mobilePlayerNoteSpacing();
 		var groupWidth:Float = arrowWidth + spacing * 3;
-		return (FlxG.width - groupWidth) * 0.5 + spacing * lane;
+		return ((FlxG.width - groupWidth) * 0.5) + (spacing * lane);
 	}
 
 	private inline function mobilePlayerNoteX(lane:Int, noteWidth:Float):Float
@@ -610,7 +610,7 @@ class EditorPlayState extends MusicBeatSubstate
 		var useMobileLayout:Bool = false;
 		#end
 
-		var strumLineX:Float = useMobileLayout ? PlayState.STRUM_X_MIDDLESCROLL : (ClientPrefs.data.middleScroll ? PlayState.STRUM_X_MIDDLESCROLL : PlayState.STRUM_X);
+		var strumLineX:Float = useMobileLayout ? 0 : (ClientPrefs.data.middleScroll ? PlayState.STRUM_X_MIDDLESCROLL : PlayState.STRUM_X);
 		var strumLineY:Float = useMobileLayout ? 0 : (ClientPrefs.data.downScroll ? (FlxG.height - 150) : 50);
 
 		for (i in 0...4)
@@ -652,7 +652,7 @@ class EditorPlayState extends MusicBeatSubstate
 			} else if (useMobileLayout && player < 1) {
 				babyArrow.scale.set(0.4, 0.4);
 				babyArrow.updateHitbox();
-				babyArrow.x += 45; // + (babyArrow.width + 4) * i
+				babyArrow.x = 45; // + (babyArrow.width + 4) * i
 				babyArrow.y = 55;
 			}
 			#end
