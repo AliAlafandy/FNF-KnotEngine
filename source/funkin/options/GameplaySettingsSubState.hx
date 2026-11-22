@@ -63,7 +63,7 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		option.onChange = onChangeAutoPause;
 
 		var option:Option = new Option('Type Score:',
-			"'Base Game': Score only,\n'Kade Engine': Score, Combo Breaks and Accuracy,\n'Psych Engine': Score, Misses and Rating,\n'Disabled': make Score invisible.",
+			"What your favorite type of score?",
 			'typeRating',
 			'string',
 			['Base Game', 'Kade Engine', 'Forever Engine', 'Psych Engine', 'Nightmare Vision', 'Disabled']);
