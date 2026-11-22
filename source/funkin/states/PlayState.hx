@@ -92,48 +92,44 @@ class PlayState extends MusicBeatState
 	public static var STRUM_X_MIDDLESCROLL = -278;
 
 	public static var ratingStuff:Array<Dynamic> = [
-		switch (ClientPrefs.data.typeRating)
-		{
-			case 'Kade Engine':
-				['D', 0.2],
-				['C', 0.4],
-				['B', 0.5],
-				['A', 0.6],
-				['A.', 0.625],
-				['A:', 0.650],
-				['AA', 0.7],
-				['AA.', 0.725],
-				['AA:', 0.750],
-				['AAA', 0.8],
-				['AAA.', 0.825],
-				['AAA:', 0.850],
-				['AAAA', 0.9],
-				['AAAA.', 0.925],
-				['AAAA:', 0.950],
-				['AAAAA', 1]
-
-			case 'Forever Engine':
-				['f', 0.2],
-				['e', 0.4],
-				['d', 0.5],
-				['c', 0.6],
-				['b', 0.7],
-				['A', 0.8],
-				['S', 0.9],
-				['S+', 1]
-
-			default:
-				['You Suck!', 0.2], //From 0% to 19%
-				['Shit', 0.4], //From 20% to 39%
-				['Bad', 0.5], //From 40% to 49%
-				['Bruh', 0.6], //From 50% to 59%
-				['Meh', 0.69], //From 60% to 68%
-				['Nice', 0.7], //69%
-				['Good', 0.8], //From 70% to 79%
-				['Great', 0.9], //From 80% to 89%
-				['Sick!', 1], //From 90% to 99%
-				['Perfect!!', 1] //The value on this one isn't used actually, since Perfect is always "1"
-		}
+		['You Suck!', 0.2], //From 0% to 19%
+		['Shit', 0.4], //From 20% to 39%
+		['Bad', 0.5], //From 40% to 49%
+		['Bruh', 0.6], //From 50% to 59%
+		['Meh', 0.69], //From 60% to 68%
+		['Nice', 0.7], //69%
+		['Good', 0.8], //From 70% to 79%
+		['Great', 0.9], //From 80% to 89%
+		['Sick!', 1], //From 90% to 99%
+		['Perfect!!', 1] //The value on this one isn't used actually, since Perfect is always "1"
+	];
+	public static var ratingStuffKade:Array<Dynamic> = [
+		['D', 0.2],
+		['C', 0.4],
+		['B', 0.5],
+		['A', 0.6],
+		['A.', 0.625],
+		['A:', 0.650],
+		['AA', 0.7],
+		['AA.', 0.725],
+		['AA:', 0.750],
+		['AAA', 0.8],
+		['AAA.', 0.825],
+		['AAA:', 0.850],
+		['AAAA', 0.9],
+		['AAAA.', 0.925],
+		['AAAA:', 0.950],
+		['AAAAA', 1]
+	];
+	public static var ratingStuffForever:Array<Dynamic> = [
+		['f', 0.2],
+		['e', 0.4],
+		['d', 0.5],
+		['c', 0.6],
+		['b', 0.7],
+		['A', 0.8],
+		['S', 0.9],
+		['S+', 1]
 	];
 
 	//event variables
@@ -4241,14 +4237,38 @@ class PlayState extends MusicBeatState
 				//trace((totalNotesHit / totalPlayed) + ', Total: ' + totalPlayed + ', notes hit: ' + totalNotesHit);
 
 				// Rating Name
-				ratingName = ratingStuff[ratingStuff.length-1][0]; //Uses last string
-				if(ratingPercent < 1)
-					for (i in 0...ratingStuff.length-1)
-						if(ratingPercent < ratingStuff[i][1])
-						{
-							ratingName = ratingStuff[i][0];
-							break;
-						}
+				switch (ClientPrefs.data.ratingType)
+				{
+					case 'Kade Engine':
+						ratingName = ratingStuffKade[ratingStuffKade.length-1][0]; //Uses last string
+						if(ratingPercent < 1)
+							for (i in 0...ratingStuffKade.length-1)
+								if(ratingPercent < ratingStuffKade[i][1])
+								{
+									ratingName = ratingStuffKade[i][0];
+									break;
+								}
+
+					case 'Forever Engine':
+						ratingName = ratingStuffForever[ratingStuffForever.length-1][0]; //Uses last string
+						if(ratingPercent < 1)
+							for (i in 0...ratingStuffForever.length-1)
+								if(ratingPercent < ratingStuffForever[i][1])
+								{
+									ratingName = ratingStuffForever[i][0];
+									break;
+								}
+
+					default:
+						ratingName = ratingStuff[ratingStuff.length-1][0]; //Uses last string
+						if(ratingPercent < 1)
+							for (i in 0...ratingStuff.length-1)
+								if(ratingPercent < ratingStuff[i][1])
+								{
+									ratingName = ratingStuff[i][0];
+									break;
+								}
+				}
 			}
 			fullComboFunction();
 		}
