@@ -610,7 +610,7 @@ class EditorPlayState extends MusicBeatSubstate
 		var useMobileLayout:Bool = false;
 		#end
 
-		var strumLineX:Float = useMobileLayout ? 0 : (ClientPrefs.data.middleScroll ? PlayState.STRUM_X_MIDDLESCROLL : PlayState.STRUM_X);
+		var strumLineX:Float = useMobileLayout ? PlayState.STRUM_X_MIDDLESCROLL : (ClientPrefs.data.middleScroll ? PlayState.STRUM_X_MIDDLESCROLL : PlayState.STRUM_X);
 		var strumLineY:Float = useMobileLayout ? 0 : (ClientPrefs.data.downScroll ? (FlxG.height - 150) : 50);
 
 		for (i in 0...4)
