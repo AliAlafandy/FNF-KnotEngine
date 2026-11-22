@@ -1992,7 +1992,7 @@ class PlayState extends MusicBeatState
 		var useMobileLayout:Bool = false;
 		#end
 
-		var strumLineX:Float = useMobileLayout ? 0 : (ClientPrefs.data.middleScroll ? STRUM_X_MIDDLESCROLL : STRUM_X);
+		var strumLineX:Float = useMobileLayout ? STRUM_X_MIDDLESCROLL : (ClientPrefs.data.middleScroll ? STRUM_X_MIDDLESCROLL : STRUM_X);
 		var strumLineY:Float = useMobileLayout ? 0 : (ClientPrefs.data.downScroll ? (FlxG.height - 150) : 50);
 
 		for (i in 0...4)
