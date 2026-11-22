@@ -1561,7 +1561,7 @@ class PlayState extends MusicBeatState
 				scoreTxt.text = '${psychScore}\n';
 				
 			case 'Nightmare Vision':
-				scoreTxt.text = '${nmvScore}\n'
+				scoreTxt.text = '${nmvScore}\n';
 
 			case 'Disabled':
 				scoreTxt.text = '';
