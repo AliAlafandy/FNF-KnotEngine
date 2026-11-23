@@ -1505,14 +1505,14 @@ class PlayState extends MusicBeatState
 		if (ret == LuaUtils.Function_Stop)
 			return;
 
-		var str:String = ''; // ratingName, '?'
+		var str:String = ratingName;
 		if(totalPlayed != 0)
 		{
 			var percent:Float = CoolUtil.floorDecimal(ratingPercent * 100, 2);
 			switch (ClientPrefs.data.typeRating)
 			{
 				case 'Kade Engine':
-					str = '${percent}% |(${ratingFC}) ${ratingName}';
+					str = '${percent}%';
 
 				case 'Forever Engine':
 					str = '${percent}% [${ratingFC}]';
@@ -1521,7 +1521,7 @@ class PlayState extends MusicBeatState
 					str = '${percent}% [${ratingFC}]';
 
 				default:
-					str = '${ratingName} (${percent}%) - ${ratingFC}';
+					str += ' (${percent}%) - ${ratingFC}';
 			}
 		}
 
@@ -1529,7 +1529,8 @@ class PlayState extends MusicBeatState
 
 		var kadeScore:String = 'Score: ${songScore}'
 		+ (!instakillOnMiss ? ' | Combo Breaks: ${songMisses}' : "")
-		+ ' | Accuracy: ${str}';
+		+ ' | Accuracy: ${str}'
+		+ ' | (${ratingFC}) ${ratingName}';
 
 		var foreverScore:String = 'Score: ${songScore}'
 		+ ' • Accuracy: ${str}'
